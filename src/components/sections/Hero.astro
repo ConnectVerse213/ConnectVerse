@@ -1,0 +1,165 @@
+---
+import Button from "../shared/Button.astro";
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import ByNumber from "./ByNumber.astro";
+
+---
+
+<section class="relative pt-32 lg:pt-36">
+    <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
+        <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 ">
+            <span class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
+            <span class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80"></span>
+        </div>
+        <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
+        <div class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
+        lg:items-center lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
+            
+            <h1 class="text-4xl/tight sm:text-5xl/tight md:text-6xl/tight xl:text-6xl/tight
+             font-bold text-heading-1 text-center">
+             Supercharge your<br><span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary via-30% to-green-600">Developer Onboarding Process</span><br>with Us
+            </h1>
+            <Paragraph className="mt-8 items-center">
+                Your Developer Advocacy Partner for Unstoppable Growth
+            </Paragraph>
+            <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
+                <div class="flex sm:flex-row flex-col gap-5 w-full">
+                    <!-- <form action=""  class="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-heading-3 shadow-lg shadow-box-shadow
+                      border border-box-border bg-box-bg rounded-full ease-linear focus-within:bg-body  focus-within:border-primary">
+                        <span class="min-w-max pr-2 border-r border-box-border">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
+                            </svg>                                                                  
+                        </span>
+                        <input type="email" name="" id="" placeholder="events.connectverse@gmail.com" class="w-full py-3 outline-none bg-transparent">
+                        <Button variant={"primary"} className={"min-w-max text-white"}>
+                            <span class="hidden sm:flex relative z-[5]">
+                                Get Started
+                            </span>
+                            <span class="flex sm:hidden relative z-[5]">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                </svg>                                      
+                            </span>
+                        </Button>
+                    </form> -->
+
+                    <!-- Success Popup (initially hidden) -->
+                    <div id="success-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div class="bg-white p-6 rounded-lg max-w-sm mx-auto text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Subscribed Successfully!</h3>
+                        <p class="text-gray-600 mb-4">Thank you for joining our community.</p>
+                        <button 
+                            onclick="document.getElementById('success-popup').classList.add('hidden')"
+                            class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition"
+                        >
+                            Close
+                        </button>
+                        </div>
+                    </div>
+
+                    <form action="https://gmail.us10.list-manage.com/subscribe/post?u=0a9b0d2f76fd7e8999d76e7ff&amp;id=9daf126415&amp;f_id=009041e5f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-heading-3 shadow-lg shadow-box-shadow border border-box-border bg-box-bg rounded-full ease-linear focus-within:bg-body focus-within:border-primary" target="_blank">
+                        <!-- Mailchimp required hidden fields -->
+                        <input type="hidden" name="u" value="0a9b0d2f76fd7e8999d76e7ff">
+                        <input type="hidden" name="id" value="9daf126415">
+                        <input type="hidden" name="f_id" value="009041e5f0">
+
+                        <!-- Email icon -->
+                        <span class="min-w-max pr-2 border-r border-box-border">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.98l7.5-4.04a2.25 2.25 0 012.134 0l7.5 4.04a2.25 2.25 0 011.183 1.98V19.5z" />
+                            </svg>
+                        </span>
+
+                        <!-- Email Input -->
+                        <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="events.connectverse@gmail.com" class="w-full py-3 outline-none bg-transparent" required aria-label="Email address">
+
+                        <!-- Anti-spam field (required by Mailchimp) -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_0a9b0d2f76fd7e8999d76e7ff_9daf126415" tabindex="-1" value="">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="min-w-max text-white bg-primary rounded-full px-4 py-3 hover:bg-primary-dark transition-colors">
+                            <span class="hidden sm:block">Subscribe</span>
+                            <span class="block sm:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                            </svg>
+                            </span>
+                        </button>
+                    </form>
+
+                    <!-- Mailchimp script (loads only in browser) -->
+                    <script is:inline>
+                    document.addEventListener('DOMContentLoaded', () => {
+                    // Load Mailchimp validation script
+                    const script = document.createElement('script');
+                    script.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js';
+                    document.body.appendChild(script);
+                    
+                    // Initialize fields configuration
+                    window.fnames = ['EMAIL'];
+                    window.ftypes = ['email'];
+                    });
+                    document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
+                    // Show success popup
+                    document.getElementById('success-popup').classList.remove('hidden');
+                    
+                    // Optional: Hide after 3 seconds
+                    setTimeout(() => {
+                        document.getElementById('success-popup').classList.add('hidden');
+                    }, 3000);
+                    });
+                    </script>
+
+                    <style>
+                    /* Response messages styling */
+                    #mce-responses {
+                        margin-top: 1rem;
+                    }
+                    #mce-error-response {
+                        color: #e53e3e;
+                    }
+                    #mce-success-response {
+                        color: #38a169;
+                    }
+                    </style>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
+            <img src="/images/image1.webp" alt="Hero image" width="2350" height="2359" class="lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96">
+        </div> -->
+    </Container>
+
+    <div class="mt-10  w-full flex mx-auto lg:mx-0 justify-center gap-5">
+        <a href="https://calendly.com/quantumworld394/30min">
+            <Button variant={"primary"} className={"min-w-max text-white cursor-pointer"}>
+                <span class="hidden sm:flex relative z-[5]">Book a call</span>
+                <span class="flex sm:hidden relative z-[5]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>                                      
+                </span>
+            </Button>
+        </a>
+        <a href="https://t.me/connectverseweb3">
+            <Button variant={"primary"} className={"min-w-max text-white cursor-pointer"}>
+                <span class="hidden sm:flex relative z-[5]">Join Community</span>
+                <span class="flex sm:hidden relative z-[5]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                    </svg>                                    
+                </span>
+            </Button>
+        </a>
+    </div>
+
+    <ByNumber/>
+</section>

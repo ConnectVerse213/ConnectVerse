@@ -1,0 +1,59 @@
+---
+const partners_folderId = '1Uu-U5m4q3f6iV2ifMY6favZQGYjuRXyK';
+const community_folderId = '1_3iP81yXMJSLUM8sPl7EDmm10odNQ2kI';
+const apiKey = 'AIzaSyBDJui9IsGMJrdgp-b46_eYHWuqHk0xqBk';
+---
+
+<style>
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    gap: 2rem;
+    align-items: center;
+  }
+  .marquee img {
+    height: 80px;
+    object-fit: contain;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
+
+<div id="image-marquee" class="marquee"></div>
+
+<script>
+  const partners_folderId = '{{partners_folderId}}';
+  const community_folderId = '{{community_folderId}}';
+  const apiKey = '{{apiKey}}';
+
+  async function fetchImages(folderId) {
+    const res = await fetch(
+      `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`
+    );
+    const data = await res.json();
+    return data.files
+      .filter(file => file.mimeType.startsWith("image/"))
+      .map(file => `https://drive.google.com/uc?export=view&id=${file.id}`);
+  }
+
+  async function loadImages() {
+    const [partners, community] = await Promise.all([
+      fetchImages(partners_folderId),
+      fetchImages(community_folderId)
+    ]);
+    const allImages = [...partners, ...community];
+
+    const container = document.getElementById('image-marquee');
+    allImages.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      container.appendChild(img);
+    });
+  }
+
+  loadImages();
+</script>
