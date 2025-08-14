@@ -1,4 +1,4 @@
-# 0xGrow - Supercharge your Developer Onboarding Process with Us
+# ConnectVerse Corp.
 
 <p align="center">
   <img src="/public/social-image.png" alt="ConnectVerse Banner">
@@ -62,7 +62,7 @@ ConnectVerse is a **Web3 Media Agency**, helping **Web3 startups, protocols, DAO
 **ConnectVerse**, an umbrella organization driving **Web3 adoption** through:
 - **[0xAcademy](https://0xAcademy.xyz)** (Web3 Education)
 - **[0xGrow](https://0xGrow.xyz)** (Growth & Marketing)
-- **[Genshot](https://genshot.vercel.app)**(Multi-chain AI-Powered Launchpad)
+- **[Genshot](https://genshot.vercel.app)** (Multi-chain AI-Powered Launchpad)
 
 🌐 **Learn More**: [connectverse.club](https://connectverse.club)
 
