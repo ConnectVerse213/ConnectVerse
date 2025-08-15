@@ -1,0 +1,46 @@
+---
+// src/components/sections/FAQ.astro
+import BaseHeadline from "../elements/BaseHeadline.astro";
+import Container from "../shared/Container.astro";
+---
+
+<Container>
+  <div>
+    <BaseHeadline title="Frequently Asked Questions" subtitle="Get answers to common questions" />
+    
+    <div class="mt-10 max-w-3xl mx-auto">
+      <div class="space-y-4">
+        {[
+          {
+            question: "How does social media marketing benefit my business?",
+            answer: "Social media marketing helps increase brand awareness, drive website traffic, generate leads, and improve customer engagement through targeted content strategies."
+          },
+          {
+            question: "Which platforms do you specialize in?",
+            answer: "We specialize in Facebook, Instagram, LinkedIn, Twitter, and TikTok marketing, tailoring strategies to each platform's unique audience."
+          },
+          {
+            question: "How long until we see results?",
+            answer: "Typically, you'll see initial engagement within 2-4 weeks, with measurable ROI appearing in 3-6 months depending on your industry and goals."
+          },
+          {
+            question: "What's included in your monthly reports?",
+            answer: "Our comprehensive reports include engagement metrics, follower growth, content performance, conversion rates, and actionable insights for improvement."
+          }
+        ].map(item => (
+          <details class="group border-b border-gray-200 pb-4" open={false}>
+            <summary class="flex justify-between items-center cursor-pointer">
+              <h3 class="text-lg font-medium text-gray-900">{item.question}</h3>
+              <span class="text-gray-500 group-open:rotate-180 transform transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-gray-600">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</Container>
