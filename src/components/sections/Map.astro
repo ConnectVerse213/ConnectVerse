@@ -1,0 +1,38 @@
+---
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Title from "../shared/Title.astro";
+---
+
+<Container>
+  <div class="text-center max-w-3xl mx-auto space-y-4">
+    <Title>Cities We Visited</Title>
+    <Paragraph>Our nationwide tour covered these key educational hubs across India</Paragraph>
+  </div>
+
+  <div class="mt-10 relative rounded-xl overflow-hidden shadow-xl">
+    <div class="aspect-w-16 aspect-h-9 w-full pb-[56.25%] relative h-[500px]">
+      <iframe 
+        src="https://www.google.com/maps/d/embed?mid=1D6ko6xMfo_MdPwGDWDqtvGwEEphBdzU" 
+        class="absolute top-0 left-0 w-full h-full"
+        loading="lazy"
+        title="Map of visited cities"
+        allowfullscreen
+      ></iframe>
+      <div class="absolute inset-0 bg-black opacity-20 hover:opacity-0 transition-opacity duration-300"></div>
+    </div>
+  </div>
+</Container>
+
+<style is:global>
+  .map-container {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  
+  .map-container iframe {
+    border: none;
+  }
+</style>

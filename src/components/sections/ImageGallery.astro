@@ -1,11 +1,13 @@
 ---
 import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+import Paragraph from "../shared/Paragraph.astro";
 ---
 
 <Container>
-  <div class="text-center max-w-3xl mx-auto mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Glimpse of our recent events</h2>
-    <p class="text-lg text-gray-600">Memorable moments from our journey across India</p>
+  <div class="text-center max-w-3xl mx-auto space-y-4">
+    <Title>Glimpse of our recent events</Title>
+    <Paragraph>Memorable moments from our journey across India</Paragraph>
   </div>
 
   <div id="tour-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
@@ -54,7 +56,7 @@ import Container from "../shared/Container.astro";
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center text-red-500\'>Failed to load image</div>'"
               >
-              <div class="gallery-caption absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 flex flex-col justify-end p-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <div class="gallery-caption absolute inset-0 bg-black/50 group-hover:bg-opacity-60 flex flex-col justify-end p-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
                 <h3 class="text-white font-bold text-lg">${file.name.split(',')[0] || 'Our Event'}</h3>
                 ${file.name.split(',').length > 1 ? `<h3 class="text-white font-medium">From ${file.name.split(',')[1]}</h3>` : ''}
                 <p class="text-gray-200 text-sm mt-1">From our India Tour 2024</p>

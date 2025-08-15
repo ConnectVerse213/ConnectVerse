@@ -1,12 +1,14 @@
 ---
-// src/components/sections/Testimonials.astro
-import BaseHeadline from "../elements/BaseHeadline.astro";
 import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+import Paragraph from "../shared/Paragraph.astro";
 ---
 
 <Container>
-  <BaseHeadline title="What Our Clients Say" subtitle="Trusted by businesses worldwide" />
-  
+  <div class="text-center max-w-3xl mx-auto space-y-4">
+    <Title>What Our Clients Say</Title>
+    <Paragraph>Trusted by businesses worldwide</Paragraph>
+  </div>
   <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
     {[
       {

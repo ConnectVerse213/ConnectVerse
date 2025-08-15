@@ -1,46 +1,120 @@
 ---
-// src/components/sections/FAQ.astro
-import BaseHeadline from "../elements/BaseHeadline.astro";
 import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+import Paragraph from "../shared/Paragraph.astro";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FAQItem[] = [
+  {
+    question: "How do you connect Web3 companies with developers?",
+    answer: "We leverage our network of 20,000+ developers, 20+ university partnerships, and 10+ city ambassadors to create direct engagement opportunities through workshops, hackathons, and bootcamps — both online and offline."
+  },
+  {
+    question: "What types of projects do you work with?",
+    answer: "We collaborate with a wide range of Web3 companies — from blockchain infrastructure providers to DeFi protocols, NFT platforms, Web3 SaaS tools, and Layer 1 & Layer 2 ecosystems — helping them onboard and activate developer communities."
+  },
+  {
+    question: "How do you measure success?",
+    answer: "We focus on measurable adoption metrics such as developer sign-ups, active integrations of your tools, hackathon participation rates, and sustained engagement. Detailed post-event reports track your ROI with precision."
+  },
+  {
+    question: "Do you operate only in India?",
+    answer: "While our core network spans 20+ universities and 10+ cities in India, we also conduct online initiatives through 0xAcademy, enabling us to reach global developer audiences."
+  },
+  {
+    question: "What’s your pricing structure?",
+    answer: "We offer flexible pricing based on your goals — whether you need a single university activation, a nationwide hackathon series, or a long-term developer advocacy program. All packages are fully customizable to maximize impact and budget efficiency."
+  }
+];
 ---
 
 <Container>
-  <div>
-    <BaseHeadline title="Frequently Asked Questions" subtitle="Get answers to common questions" />
-    
-    <div class="mt-10 max-w-3xl mx-auto">
-      <div class="space-y-4">
-        {[
-          {
-            question: "How does social media marketing benefit my business?",
-            answer: "Social media marketing helps increase brand awareness, drive website traffic, generate leads, and improve customer engagement through targeted content strategies."
-          },
-          {
-            question: "Which platforms do you specialize in?",
-            answer: "We specialize in Facebook, Instagram, LinkedIn, Twitter, and TikTok marketing, tailoring strategies to each platform's unique audience."
-          },
-          {
-            question: "How long until we see results?",
-            answer: "Typically, you'll see initial engagement within 2-4 weeks, with measurable ROI appearing in 3-6 months depending on your industry and goals."
-          },
-          {
-            question: "What's included in your monthly reports?",
-            answer: "Our comprehensive reports include engagement metrics, follower growth, content performance, conversion rates, and actionable insights for improvement."
-          }
-        ].map(item => (
-          <details class="group border-b border-gray-200 pb-4" open={false}>
-            <summary class="flex justify-between items-center cursor-pointer">
-              <h3 class="text-lg font-medium text-gray-900">{item.question}</h3>
-              <span class="text-gray-500 group-open:rotate-180 transform transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-gray-600">{item.answer}</p>
-          </details>
-        ))}
-      </div>
-    </div>
+  <div class="text-center max-w-3xl mx-auto space-y-4">
+    <Title>Frequently Asked Questions</Title>
+    <Paragraph>Get answers to common questions</Paragraph>
   </div>
+    
+  <div class="mt-10 max-w-3xl mx-auto space-y-4">
+    {faqItems.map((item, index) => (
+      <div class="group">
+        <details class="w-full">
+          <summary class="flex justify-between items-center cursor-pointer p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition-all">
+            <h3 class="text-lg font-medium text-gray-900">{item.question}</h3>
+            <span class="text-gray-500 group-open:rotate-180 transform transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </summary>
+          <div class="p-5 bg-white mt-1 rounded-b-lg">
+            <p class="text-gray-600">{item.answer}</p>
+          </div>
+        </details>
+      </div>
+    ))}
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqDetails = document.querySelectorAll('details[class*="group"]');
+      
+      // Add transition styles dynamically
+      const style = document.createElement('style');
+      style.textContent = `
+        details[open] summary ~ * {
+          animation: fadeIn 300ms ease-in-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        details .answer-content {
+          overflow: hidden;
+          transition: max-height 300ms ease, opacity 300ms ease;
+        }
+      `;
+      document.head.appendChild(style);
+
+      faqDetails.forEach(detail => {
+        const summary = detail.querySelector('summary');
+        const content = detail.querySelector('.answer-content') || detail.querySelector('summary + div');
+        
+        // Initialize height
+        if (content) {
+          content.style.maxHeight = '0';
+          content.style.opacity = '0';
+        }
+
+        detail.addEventListener('toggle', () => {
+          if (detail.open) {
+            // Close others smoothly
+            faqDetails.forEach(otherDetail => {
+              if (otherDetail !== detail && otherDetail.open) {
+                const otherContent = otherDetail.querySelector('.answer-content') || otherDetail.querySelector('summary + div');
+                if (otherContent) {
+                  otherContent.style.maxHeight = '0';
+                  otherContent.style.opacity = '0';
+                }
+                otherDetail.open = false;
+              }
+            });
+            
+            // Open current smoothly
+            if (content) {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              content.style.opacity = '1';
+            }
+          } else if (content) {
+            // Close current smoothly
+            content.style.maxHeight = '0';
+            content.style.opacity = '0';
+          }
+        });
+      });
+    });
+  </script>
 </Container>
