@@ -7,8 +7,6 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-import { Image } from 'astro:assets';
-import ConnectVerse_fur_logo from "/src/assets/images/connectverse-corp/logo/ConnectVerse-fur.png";
 ---
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@ import ConnectVerse_fur_logo from "/src/assets/images/connectverse-corp/logo/Con
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/src/assets/images/connectverse-corp/logo/ConnectVerse-fur.png" />
+    <link rel="icon" type="image/png" href="/public/assets/images/connectverse-corp/logo/ConnectVerse-fur.png" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="ConnectVerse - Web3 Marketing & Community Growth">
     <!-- <title>ConnectVerse - {title}</title> -->
