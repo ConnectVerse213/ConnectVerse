@@ -52,7 +52,7 @@ ConnectVerse is a **Web3 Media Agency**, helping **Web3 startups, protocols, DAO
 ## 📞 Get Started
 
 🔗 **Website**: [connectverse.club](https://connectverse.club)  
-📅 **Book a Call**: [Calendly](https://calendly.com/quantumworld394/30min)  
+📅 **Book a Call**: [Calendly](https://calendly.com/connectverse/short-meet)  
 📢 **Join Our Community**: 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram)](https://t.me/connectverseweb3)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter)](https://x.com/connectverse3)
