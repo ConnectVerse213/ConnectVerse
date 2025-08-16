@@ -1,10 +1,10 @@
 ---
 import Container from "../shared/Container.astro";
 import Title from "../shared/Title.astro";
-
+import Paragraph from "../shared/Paragraph.astro";
 ---
 
-<section>
+<!-- <section>
     <Container className="space-y-8">
         <div class="text-center max-w-3xl mx-auto">
             <Title>
@@ -45,7 +45,8 @@ import Title from "../shared/Title.astro";
             <div class="p-2 sm:p-5 rounded-xl bg-body border border-box-border group">
                 <img src="/assets/images/partners/Pro Peers.jpg" alt="Pro Peers" class="h-7 sm:h-10 w-auto ease-linear duration-300 grayscale group-hover:!grayscale-0 group-hover:scale-105">
             </div>
-            <!-- Community Partners -->
+
+
             <div class="p-2 sm:p-5 rounded-xl bg-body border border-box-border group">
                 <img src="/assets/images/partners/Accumulate.jpg" alt="Accumulate" class="h-7 sm:h-10 w-auto ease-linear duration-300 grayscale group-hover:!grayscale-0 group-hover:scale-105">
             </div>
@@ -115,4 +116,100 @@ import Title from "../shared/Title.astro";
             </script>
         </div>
     </Container>
+</section> -->
+
+
+<section>
+  <Container className="space-y-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <Title>
+        Trusted by Communities and Web3 companies all over the world
+      </Title>
+    </div>
+
+    <!-- Partners Section -->
+    <div>
+      <Paragraph className="text-center text-xl font-semibold mb-4">Our Partners</Paragraph>
+      <div id="partners-gallery" class="flex justify-center flex-wrap gap-4">
+        <div class="partners-loading text-center py-8 text-gray-500 w-full">Loading partners...</div>
+      </div>
+    </div>
+
+    <!-- Communities Section -->
+    <div class="mt-12">
+      <Paragraph className="text-center text-xl font-semibold mb-4">Our Community Partners</Paragraph>
+      <div id="communities-gallery" class="flex justify-center flex-wrap gap-4">
+        <div class="communities-loading text-center py-8 text-gray-500 w-full">Loading communities...</div>
+      </div>
+    </div>
+
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const apiKey = 'AIzaSyBDJui9IsGMJrdgp-b46_eYHWuqHk0xqBk';
+        const partnerFolderId = '1Uu-U5m4q3f6iV2ifMY6favZQGYjuRXyK';
+        const communityFolderId = '1_3iP81yXMJSLUM8sPl7EDmm10odNQ2kI';
+
+        // Function to load images from Google Drive
+        async function loadGallery(containerId, folderId, sectionName) {
+          const container = document.getElementById(containerId);
+          const loadingElement = container.querySelector(`.${sectionName}-loading`);
+          
+          try {
+            loadingElement.textContent = `Loading ${sectionName}...`;
+            
+            // First get the list of files
+            const listResponse = await fetch(
+              `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`
+            );
+            
+            if (!listResponse.ok) {
+              throw new Error(`Failed to fetch file list: ${listResponse.status}`);
+            }
+            
+            const listData = await listResponse.json();
+            
+            if (!listData.files || listData.files.length === 0) {
+              loadingElement.textContent = `No ${sectionName} images found.`;
+              return;
+            }
+            
+            loadingElement.remove();
+            
+            // Process each image file
+            for (const file of listData.files) {
+              if (file.mimeType.includes("image")) {
+                // Create direct thumbnail URL (works for publicly shared files)
+                const imgUrl = `https://lh3.googleusercontent.com/d/${file.id}=w400`;
+                const fileName = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
+                
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'p-2 sm:p-5 rounded-xl bg-body border border-box-border group';
+                
+                galleryItem.innerHTML = `
+                  <img 
+                  src="${imgUrl}" 
+                  alt="${file.name}"
+                  loading="lazy"
+                  class="h-7 sm:h-10 w-auto ease-linear duration-300 group-hover:scale-105"
+                  onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'h-full flex items-center justify-center bg-gray-100 text-red-500\'>Image failed to load</div>'"
+                >
+                `;
+                
+                container.appendChild(galleryItem);
+              }
+            }
+            
+          } catch (error) {
+            console.error(`${sectionName} Gallery Error:`, error);
+            loadingElement.textContent = `Error loading ${sectionName}: ${error.message}`;
+            loadingElement.classList.add('text-red-500');
+          }
+        }
+
+        // Load both galleries
+        await loadGallery('partners-gallery', partnerFolderId, 'partners');
+        await loadGallery('communities-gallery', communityFolderId, 'communities');
+      });
+    </script>
+  </Container>
 </section>
